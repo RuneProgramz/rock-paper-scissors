@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getComputerChoice(){
+            let randomness = Math.random();
+            
+            if(randomness < 0.3){
+                return "rock";
+            }
+            else if(randomness < 0.6){
+                return "paper";
+            }
+            else if(randomness < 0.9999999999999999){
+                return "scissors"
+            }
+
+            return randomness;
+
+        }
+
+        function getHumanChoice(){
+            let userInput = prompt("Choose Between: Rock , Paper, Scissors");
+            return userInput.toLowerCase();
+            
+        }
+
+         
+        
+        let humanScore = 0;
+        let computerScore = 0;
+        
+
+        function playRound(){
+
+            let humanChoice = getHumanChoice();
+            let computerChoice = getComputerChoice();
+            console.log("Your choice was" + " " + humanChoice);             //why does humanChoice remove its ( ) and not getComputerChoice..
+            console.log("The computer chose" +" " + computerChoice);
+       
+
+            if (humanChoice === "rock" && computerChoice === "scissors"){
+                console.log("You win, Rock beats Scissors");
+                humanScore++;
+            }
+            else if (humanChoice === "rock" && computerChoice ==="rock"){
+                console.log("You guys tied man, no point.");
+            
+            }
+            
+           
+            else if (humanChoice === "rock" && computerChoice ==="paper"){
+                console.log("You lost,paper beats rock");
+                computerScore++;
+            }
+
+            else if (humanChoice === "paper" && computerChoice ==="rock"){
+                console.log("You win, Paper beats Rock");
+                humanScore++;
+            
+            }
+
+             else if (humanChoice === "paper" && computerChoice ==="paper"){
+                console.log("You guys tied man, no point.");
+            
+            }
+
+             else if (humanChoice === "paper" && computerChoice ==="scissors"){
+                console.log("You lost,Scissors Beats Paper");
+                computerScore++;
+            }
+
+            else if (humanChoice === "scissors" && computerChoice ==="paper"){
+                console.log("You win, Scissors Beats Paper");
+                humanScore++;
+            
+            }
+
+            else if (humanChoice === "scissors" && computerChoice ==="scissors"){
+                console.log("You guys tied man, no point.");
+            
+            }
+
+
+             else if (humanChoice === "scissors" && computerChoice ==="rock"){
+                console.log("You lost,Rock Beats Paper");
+                computerScore++;
+            }
+
+            
+        
+
+
+        }
+
+
+        function playGame(){
+            for(let i = 1;i < 6 ;i++){
+                console.log("Round" + " " + i);
+                playRound();
+            }
+        }
+
+
+
+        
+     
+
+        
+
+
+
+        playGame();
+        console.log("-------------- FINAL RESULT ----------------");
+        console.log("Your Score is" + " " + humanScore);
+        console.log("The Computers Score is" + " " + computerScore);
+
+        function winner(){
+            if(humanScore > computerScore){
+                console.log("Result : You are the winner!");
+            }
+            else if(computerScore > humanScore) {
+                console.log("Result : You lost man");
+            }
+            else if(computerScore === humanScore){
+                console.log("Result: You tied man");
+            }
+        }
+        console.log(winner());
+    
+
+
+        // 0- 2.9
+        // 3.0 - 5.9
+        // 6.0 - 9.9
+        //Math.random(): helps to get a random number from 0 - 0.99.
+        //Math.floor(): removes the decimal contnet, leving only th efirst number.
+    </script>
+</script>
+</body>
+</html>
