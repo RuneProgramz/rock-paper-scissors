@@ -6,6 +6,12 @@
     <title>Document</title>
 </head>
 <body>
+    <button class="rock">Rock</button>
+    <button class="paper">Paper</button>
+    <button class="scissors">Scissors</button>
+    <div class="scoreboard">Results</div>
+    </body>
+    
     <script>
         function getComputerChoice(){
             let randomness = Math.random();
@@ -24,87 +30,114 @@
 
         }
 
-        function getHumanChoice(){
-            let userInput = prompt("Choose Between: Rock , Paper, Scissors");
-            return userInput.toLowerCase();
+        // function getHumanChoice(){
+        //     let userInput = prompt("Choose Between: Rock , Paper, Scissors");
+        //     return userInput.toLowerCase();
+            
+        // }
+        function fiveRounds(){
+            if(humanScore ===5){
+                scorediv.textContent = "YOUR CLOWN LOOKIN AHH WON";
+                rockButton.disabled = True;
+                paperButton.disabled = True;
+                scissorsButton.disabled = True;
+            }
+            else if(computerScore === 5){
+                scorediv.textContent = "YOU LET A BIH AHH COMPUTER BEAT YOU";
+                rockButton.disabled = True;
+                paperButton.disabled = True;
+                scissorsButton.disabled = True;
+
+            }
+
             
         }
-
          
         
         let humanScore = 0;
         let computerScore = 0;
         
 
-        function playRound(){
+        function playRound(humanChoice){
 
-            let humanChoice = getHumanChoice();
+            // let humanChoice = getHumanChoice();
+            let message ="";
             let computerChoice = getComputerChoice();
             console.log("Your choice was" + " " + humanChoice);             //why does humanChoice remove its ( ) and not getComputerChoice..
             console.log("The computer chose" +" " + computerChoice);
        
 
             if (humanChoice === "rock" && computerChoice === "scissors"){
-                console.log("You win, Rock beats Scissors");
+                message = "You win, Rock beats Scissors";
                 humanScore++;
             }
             else if (humanChoice === "rock" && computerChoice ==="rock"){
-                console.log("You guys tied man, no point.");
+                message = "You guys tied man, no point.";
             
             }
             
            
             else if (humanChoice === "rock" && computerChoice ==="paper"){
-                console.log("You lost,paper beats rock");
+                message = "You lost,paper beats rock";
                 computerScore++;
             }
 
             else if (humanChoice === "paper" && computerChoice ==="rock"){
-                console.log("You win, Paper beats Rock");
+                message = "You win, Paper beats Rock";
                 humanScore++;
             
             }
 
              else if (humanChoice === "paper" && computerChoice ==="paper"){
-                console.log("You guys tied man, no point.");
+                message = "You guys tied man, no point.";
             
             }
 
              else if (humanChoice === "paper" && computerChoice ==="scissors"){
-                console.log("You lost,Scissors Beats Paper");
+                message = "You lost,Scissors Beats Paper";
                 computerScore++;
             }
 
             else if (humanChoice === "scissors" && computerChoice ==="paper"){
-                console.log("You win, Scissors Beats Paper");
+                message = "You win, Scissors Beats Paper";
                 humanScore++;
             
             }
 
             else if (humanChoice === "scissors" && computerChoice ==="scissors"){
-                console.log("You guys tied man, no point.");
+                message = "You guys tied man, no point.";
             
             }
 
 
              else if (humanChoice === "scissors" && computerChoice ==="rock"){
-                console.log("You lost,Rock Beats Paper");
+                message = "You lost,Rock Beats Paper";
                 computerScore++;
             }
 
+            scorediv.textContent = `${message}
+            Your score is ${humanScore} ------ The computers score is ${computerScore}`;
+            fiveRounds();
+
+            }
+
+
+            
             
         
 
 
-        }
+        
 
 
-        function playGame(){
-            for(let i = 1;i < 6 ;i++){
-                console.log("Round" + " " + i);
-                playRound();
-            }
-        }
+
+
+        // function playGame(){
+        //     for(let i = 1;i < 6 ;i++){
+        //         console.log("Round" + " " + i);
+        //         playRound();
+        //     }
+        // }
 
 
 
@@ -115,7 +148,7 @@
 
 
 
-        playGame();
+        // playGame();
         console.log("-------------- FINAL RESULT ----------------");
         console.log("Your Score is" + " " + humanScore);
         console.log("The Computers Score is" + " " + computerScore);
@@ -139,8 +172,35 @@
         // 3.0 - 5.9
         // 6.0 - 9.9
         //Math.random(): helps to get a random number from 0 - 0.99.
-        //Math.floor(): removes the decimal contnet, leving only th efirst number.
+        //Math.floor(): removes the decimal contnet, leving only the first number.
+
+
+        const rockButton = document.querySelector(".rock");
+        const paperButton = document.querySelector(".paper");
+        const scissorsButton = document.querySelector(".scissors");
+        const scorediv = document.querySelector(".scoreboard");
+
+        
+
+        rockButton.addEventListener("click", function(){
+            playRound("rock");
+        })
+
+        paperButton.addEventListener("click",function(){
+            playRound("paper");
+        })
+
+        scissorsButton.addEventListener("click",function(){
+            playRound("scissors");
+        })
+
+        const disablerockbutton = document.querySelector(".rock");
+        const disablepaperbutton = document.querySelector(".paper");
+        const disablescissorsbutton = document.querySelector(".scissors");
+
+        
+
     </script>
-</script>
+
 </body>
 </html>
